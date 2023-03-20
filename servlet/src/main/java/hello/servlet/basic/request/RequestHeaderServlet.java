@@ -19,6 +19,7 @@ public class RequestHeaderServlet extends HttpServlet {
         printStartLine(request);
         printHeaders(request);
         printHeaderUtils(request);
+        printEtc(request);
 
         response.getWriter().write("ok!");
     }
@@ -86,5 +87,25 @@ public class RequestHeaderServlet extends HttpServlet {
 
         System.out.println("----- Header Utils ----- end -----");
         System.out.println();
+    }
+
+    private void printEtc(HttpServletRequest request) {
+        System.out.println("----- Etc Utils ----- start -----");
+
+        System.out.println("Remote Util");
+        System.out.println("request.getRemoteHost() = " + request.getRemoteHost());
+        System.out.println("request.getRemoteAddr() = " + request.getRemoteAddr());
+        System.out.println("request.getRemotePort() = " + request.getRemotePort());
+        System.out.println("request.getRemoteUser() = " + request.getRemoteUser());
+        System.out.println();
+
+        System.out.println("Local Util");
+        System.out.println("request.getLocalName() = " + request.getLocalName());
+        System.out.println("request.getLocalAddr() = " + request.getLocalAddr());
+        System.out.println("request.getLocalPort() = " + request.getLocalPort());
+
+        System.out.println("----- Etc Utils ----- end -----");
+        System.out.println();
+
     }
 }
