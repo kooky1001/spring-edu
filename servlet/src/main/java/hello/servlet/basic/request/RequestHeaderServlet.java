@@ -2,6 +2,7 @@ package hello.servlet.basic.request;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -70,5 +71,20 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("request.getLocale() = " + request.getLocale());
         System.out.println();
 
+        System.out.println("Cookie Util");
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                System.out.println(cookie.getName() + " = " + cookie.getValue());
+            }
+        }
+        System.out.println();
+
+        System.out.println("Content Utils");
+        System.out.println("request.getContentType() = " + request.getContentType());
+        System.out.println("request.getContentLength() = " + request.getContentLength());
+        System.out.println("request.getCharacterEncoding() = " + request.getCharacterEncoding());
+
+        System.out.println("----- Header Utils ----- end -----");
+        System.out.println();
     }
 }
