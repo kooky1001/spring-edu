@@ -2,6 +2,7 @@ package hello.servlet.basic.response;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,8 +24,53 @@ public class ResponseHeaderServlet extends HttpServlet {
         response.setHeader("Pragma", "no-cache");
         response.setHeader("my-header", "hello");
 
+        //[response-header] 편의 메소드
+        content(response);
+        cookie(response);
+        redirect(response);
+        
         PrintWriter writer = response.getWriter();
         writer.println("ok");
 
+    }
+
+    /**
+     * redirect 편의 메소드
+     * @param response
+     */
+    private void redirect(HttpServletResponse response) throws IOException {
+        //Status Code 302
+        //Location: /basic/hello-form.html
+        //response.setStatus(HttpServletResponse.SC_FOUND); //302
+        //response.setHeader("Location", "/basic/hello-form.html");
+
+        response.sendRedirect("/basic/hello-form.html");
+    }
+
+    /**
+     * Cookie 편의 메소드
+     * @param response
+     */
+    private void cookie(HttpServletResponse response) {
+        //Set-Cookie: myCookie=good; Max-Age=600;
+        //response.setHeader("Set-Cookie", "myCookie=good; Max-Age=600");
+
+        Cookie cookie = new Cookie("myCookie", "good");
+        cookie.setMaxAge(600);
+        response.addCookie(cookie);
+    }
+
+    /**
+     * Content 편의 메소드
+     * @param response
+     */
+    private void content(HttpServletResponse response) {
+        //Content-Type: text/plain;charset=utf-8
+        //Content-Length: 2
+        //response.setHeader("Content-Type", "text/plain;charset=utf-8");
+
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("utf-8");
+        //response.setContentLength(2); //(생략시 자동 생성)
     }
 }
