@@ -88,6 +88,7 @@ public class LoginController {
         //로그인 성공처리
         //세션 관리자를 통해 세션을 생성하고, 회원 데이터 보관
         HttpSession session = request.getSession();
+        //session.setMaxInactiveInterval(1800);
         session.setAttribute(Constants.LOGIN_MEMBER, loginMember);
         return "redirect:/";
     }
