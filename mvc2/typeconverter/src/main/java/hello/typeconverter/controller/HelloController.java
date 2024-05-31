@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import hello.typeconverter.type.IpPort;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
@@ -22,4 +23,12 @@ public class HelloController {
 		System.out.println("data = " + data);
 		return "Hello World";
 	}
+
+	@GetMapping("/ip-port")
+	public String ipPort(@RequestParam("ipPort") IpPort ipPort) {
+		System.out.println("ipPort.getIp() = " + ipPort.getIp());
+		System.out.println("ipPort.getPort() = " + ipPort.getPort());
+		return "Hello World";
+	}
+
 }
