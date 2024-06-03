@@ -36,7 +36,7 @@ public class ItemController {
 
 	@GetMapping("/items/new")
 	public String newItem(@ModelAttribute ItemForm form) {
-		return "items-form";
+		return "item-form";
 	}
 
 	@PostMapping("/items/new")
@@ -59,7 +59,7 @@ public class ItemController {
 	public String items(@PathVariable("id") long id, Model model) {
 		Item item = itemRepository.findById(id);
 		model.addAttribute("item", item);
-		return "items-view";
+		return "item-view";
 	}
 
 	@ResponseBody
