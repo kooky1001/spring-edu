@@ -55,8 +55,6 @@ public class MemberRepositoryV0 {
 		} finally {
 			close(conn, pstmt, null);
 		}
-
-
 	}
 
 	public Member findById(String memberId) throws SQLException {
